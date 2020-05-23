@@ -12,7 +12,7 @@ namespace ConsoleApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class Table_1
+    public partial class Test
     {
         public int PostId { get; set; }
         public System.DateTime DatePublished { get; set; }

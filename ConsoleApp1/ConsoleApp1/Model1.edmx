@@ -4,15 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DataBaseDemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DataBaseDemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DataBaseDemo.dbo.Table_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Table_1">
+        <EntityType Name="Test">
           <Key>
             <PropertyRef Name="PostId" />
-            <PropertyRef Name="DatePublished" />
-            <PropertyRef Name="Title" />
-            <PropertyRef Name="Body" />
           </Key>
           <Property Name="PostId" Type="int" Nullable="false" />
           <Property Name="DatePublished" Type="smalldatetime" Nullable="false" />
@@ -20,48 +17,37 @@ warning 6002: The table/view 'DataBaseDemo.dbo.Table_1' does not have a primary 
           <Property Name="Body" Type="varchar" MaxLength="8000" Nullable="false" />
         </EntityType>
         <EntityContainer Name="DataBaseDemoModelStoreContainer">
-          <EntitySet Name="Table_1" EntityType="Self.Table_1" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Table_1].[PostId] AS [PostId], 
-    [Table_1].[DatePublished] AS [DatePublished], 
-    [Table_1].[Title] AS [Title], 
-    [Table_1].[Body] AS [Body]
-    FROM [dbo].[Table_1] AS [Table_1]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DataBaseDemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Table_1">
+        <EntityContainer Name="DataBaseDemoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tests" EntityType="DataBaseDemoModel.Test" />
+        </EntityContainer>
+        <EntityType Name="Test">
           <Key>
             <PropertyRef Name="PostId" />
-            <PropertyRef Name="DatePublished" />
-            <PropertyRef Name="Title" />
-            <PropertyRef Name="Body" />
           </Key>
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="DatePublished" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Body" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="DataBaseDemoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Table_1" EntityType="Self.Table_1" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DataBaseDemoModelStoreContainer" CdmEntityContainer="DataBaseDemoEntities">
-          <EntitySetMapping Name="Table_1">
-            <EntityTypeMapping TypeName="DataBaseDemoModel.Table_1">
-              <MappingFragment StoreEntitySet="Table_1">
-                <ScalarProperty Name="PostId" ColumnName="PostId" />
-                <ScalarProperty Name="DatePublished" ColumnName="DatePublished" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="DataBaseDemoModel.Test">
+              <MappingFragment StoreEntitySet="Test">
                 <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DatePublished" ColumnName="DatePublished" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

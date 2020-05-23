@@ -25,6 +25,6 @@ namespace ConsoleApp1
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Table_1> Table_1 { get; set; }
+        public virtual DbSet<Test> Tests { get; set; }
     }
 }

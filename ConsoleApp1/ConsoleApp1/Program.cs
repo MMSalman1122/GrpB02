@@ -12,14 +12,14 @@ namespace ConsoleApp1
         {
             
             var context=new DataBaseDemoEntities();
-            var post = new Table_1()
+            var post = new Test()
             {
                 Body = "body",
                 DatePublished = DateTime.Now,
                 Title = "title",
                 PostId = 1
             };
-            context.Table_1.Add(post);
+            context.Tests.Add(post);
             context.SaveChanges();
 
             Console.WriteLine("done");
