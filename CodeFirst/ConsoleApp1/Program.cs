@@ -14,11 +14,7 @@ namespace ConsoleApp1
         public string Title { get; set; }
         public string Body { get; set; }
     }
-    public class BlogContext: DbContext
-    {
-        public DbSet<Post> Posts { get; set; }
-
-    }
+   
     class Program
     {
         static void Main(string[] args)
